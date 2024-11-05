@@ -1,0 +1,152 @@
+<div class="container my-5 m-auto 100">
+    <div class="product-form shadow-lg" style=" background-color: #fff;">
+
+        <h6 class="mb-4" style="color: #b83807;">Add Your Product</h6>
+
+        <div *ngIf="submitted && backendErrors && getErrorMessages().length > 0" class="text-danger text-center">
+            <ul>
+                <li class="list-unstyled" *ngFor="let error of getErrorMessages()">{{ error }}</li>
+            </ul>
+        </div>
+
+        <form #productForm="ngForm" (ngSubmit)="onSubmit(productForm)" enctype="multipart/form-data">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="ptitle" placeholder="Your product title"
+                                name="title" ngModel required>
+                            <label for="ptitle">Product Title</label>
+                            <div *ngIf="submitted && productForm.controls['title']?.invalid" class="text-danger">
+                                Product title is required.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-floating">
+                            <input type="number" class="form-control" id="price" placeholder="Your product price"
+                                name="price" ngModel required min="1">
+                            <label for="price">Product Price</label>
+                            <div *ngIf="submitted && productForm.controls['price']?.invalid" class="text-danger">
+                                <div *ngIf="productForm.controls['price']?.errors?.['required']">
+                                    Product price is required.
+                                </div>
+                                <div *ngIf="productForm.controls['price']?.errors?.['min']">
+                                    Price must be greater than 0.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-floating">
+                            <textarea class="form-control" id="pDescription" placeholder="Product Description"
+                                style="height: 50px;" name="description" ngModel required></textarea>
+                            <label for="pDescription">Product Description</label>
+                            <div *ngIf="submitted && productForm.controls['description']?.invalid" class="text-danger">
+                                Product description is required.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="my-3">
+                        <div class="form-floating">
+                            <select class="form-select" id="category" name="category" ngModel required>
+                                <option selected disabled>Select Category</option>
+                                <option *ngFor="let element of categories" [value]="element.id">
+                                    {{element.category_name}}
+                                </option>
+                            </select>
+                            <label for="category">Category</label>
+                            <div *ngIf="submitted && productForm.controls['category']?.invalid" class="text-danger">
+                                Product category is required.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-floating">
+                            <input type="file" class="form-control" id="cover_image" accept="image" multiple
+                                (change)="onCoverImageSelect($event)" required>
+                            <label for="cover_image">Cover image </label>
+                            <div *ngIf="submitted && !imageUploaded" class="text-danger">
+                                cover image is required.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+
+                    <div class="mb-3">
+                        <div class="form-floating">
+                            <input type="number" class="form-control" id="stock" placeholder="Your product price"
+                                name="stock" ngModel required min="1">
+                            <label for="stock">Product stock</label>
+                            <div *ngIf="submitted && productForm.controls['stock']?.invalid" class="text-danger">
+                                <div *ngIf="productForm.controls['stock']?.errors?.['required']">
+                                    Product stock is required.
+                                </div>
+                                <div *ngIf="productForm.controls['stock']?.errors?.['min']">
+                                    stock must be greater than 0.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="material" placeholder="Your product materials"
+                                name="material" ngModel required>
+                            <label for="material">Materials</label>
+                            <div *ngIf="submitted && productForm.controls['material']?.invalid" class="text-danger">
+                                <div *ngIf="productForm.controls['material']?.errors?.['required']">
+                                    Product material is required.
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="mb-3">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="size" placeholder="Your product materials"
+                                name="size" ngModel required>
+                            <label for="material">Size</label>
+                            <div *ngIf="submitted && productForm.controls['size']?.invalid" class="text-danger">
+                                <div *ngIf="productForm.controls['size']?.errors?.['required']">
+                                    Product size is required.
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="mt-3">
+                            <div class="form-floating">
+                                <input type="file" class="form-control" id="gallery" accept="image/*" multiple
+                                    (change)="onFileSelect($event)" required>
+                                <label for="gallery">Product Gallery</label>
+                                <div *ngIf="submitted && selectedFiles?.length === 0" class="text-danger">
+                                    At least one product image is required.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-3">
+                            <div class="form-floating">
+                                <input type="file" class="form-control" id="video" accept="video" name="video"
+                                    (change)="onVideoSelect($event)" ngModel>
+                                <label for="video">Product a Video (optional)</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn w-50 fw-bolder text-white" style="background-color: #b83807;">Add
+                    Product</button>
+            </div>
+        </form>
+    </div>
+
+</div>

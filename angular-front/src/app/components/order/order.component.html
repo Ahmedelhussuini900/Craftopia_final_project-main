@@ -1,0 +1,37 @@
+<div class="container shadow-lg mt-5 mb-5 pb-5">
+    <h6 class="p-5" style="color: #991f00;">My Order</h6>
+    <div class="container">
+        <table class="table text-center">
+            <thead>
+                <tr>
+                    
+                    <th scope="col">Amount</th>
+                    <th scope="col">Order Date</th>
+                    <th scope="col">payment </th>
+                    <th scope="col">Status</th>
+
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let order of orders">
+                  
+                    <td>{{ order.total | currency }}</td>
+                    <td>{{ order.created_at | date:'dd/MM/yyyy' }}</td>
+
+
+
+                    <td>{{ order.payment_status }}</td>
+                    <td>{{ order.status }}</td>
+
+                    <td>
+                        <button type="button" class="btn me-1" style="color:#000" (click)="viewOrder(order)"><i class="fa-solid fa-eye fs-4"></i></button>
+                        <button type="button" class="btn me-1" style="color: #007c00" (click)="payForOrder(order)" [disabled]="order.payment_status === 'canceled' || order.payment_status === 'payed'" ><img src="images/payment.png" alt="" style="width:30px; height:30px;"></button>
+                        <button type="button" class="btn me-1" style="color: #991f00 ;"  (click)="deleteOrder(order)"[disabled]="order.payment_status === 'canceled' || order.payment_status === 'payed'"><i class="fa-solid fa-trash-can fs-4"></i></button>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

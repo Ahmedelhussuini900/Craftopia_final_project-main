@@ -1,0 +1,71 @@
+<div class="container">
+  <h6 class="ps-5 pt-5 pb-3" style="color:#b83807;">All Sellers</h6>
+  <div class="container">
+    <div *ngIf="filteredSellers && filteredSellers.length > 0; else noProductsTemplate">
+      <div class="mb-5 d-flex justify-content-center">
+        <div class="input-group" style="max-width: fit-content;">
+          <input class="form-control border rounded-pill" [(ngModel)]="searchTerm" type="search" placeholder="Search"
+            id="example-search-input" style="max-width: fit-content;">
+          <button class="btn border-0 rounded-pill" type="button" style="margin-left: -1px;">
+            <i (click)="search()" class="fa fa-search" style="color: #FF3A20;"></i>
+          </button>
+        </div>
+      </div>
+      <div class="container mt-2">
+        <table class="table text-center">
+          <thead>
+            <tr>
+              <th scope="col">image</th>
+      
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
+              <th scope="col">Gender</th>
+              <th scope="col">Email</th>
+              <th scope="col">Total sales</th>
+      
+              <th scope="col">shope name</th>
+              <th scope="col">Phone</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let seller of filteredSellers| paginate: { itemsPerPage: itemsPerPage, currentPage: page }">
+              <!-- <td scope="col">{{customer.id}}</td> -->
+              <td> <img [src]="seller.user.image" class="rounded-circle" style="height:70px; width:70px; object-fit:cover;"
+                  alt="">
+              </td>
+              <td scope="col">{{seller.user.name}}</td>
+              <td scope="col">{{seller.user.last_name}}</td>
+              <td scope="col">{{seller.user.gender}}</td>
+              <td scope="col">{{seller.user.email}}</td>
+              <td>{{seller.total_sales}}</td>
+              <td scope="col">{{seller.shop_name}}</td>
+              <td>{{seller.phone}}</td>
+              <td>
+                <a (click)="banUser(seller)" style="cursor:pointer;">
+                  <i class="fa-solid fa-ban" style="color:rgb(173, 4, 4)"></i>
+      
+                </a>
+      
+                <!-- <button type="button" class="btn me-1">Delete</button> -->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      
+      </div>
+      <div class="d-flex justify-content-center my-4 ">
+        <pagination-controls (pageChange)="page = $event"></pagination-controls>
+      </div>
+    </div>
+
+  </div>
+</div>
+<ng-template #noProductsTemplate>
+  <div class="container text-center p-5 shadow-lg">
+      <img src="images/not-found.jpg" style="height:200px; width:250px;" alt="">
+      <h3 class="text-muted">No data available.</h3>
+  </div>
+</ng-template>
+
+

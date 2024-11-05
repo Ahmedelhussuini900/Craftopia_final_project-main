@@ -1,0 +1,57 @@
+<div class="container my-5 m-auto w-50">
+    <div class="product-form shadow-lg" style=" background-color: #fff;">
+
+        <h6 class="mb-2 p-4" style="color: #b83807;">Add a New Category</h6>
+
+        <div *ngIf="submitted && backendErrors && getErrorMessages().length > 0" class="text-danger text-center">
+            <ul>
+                <li class="list-unstyled" *ngFor="let error of getErrorMessages()">{{ error }}</li>
+            </ul>
+        </div>
+
+        <form (ngSubmit)="onSubmit(categoryForm)" #categoryForm="ngForm" enctype="multipart/form-data">
+
+            <div class="row p-5">
+
+                <div class="mb-3">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="cTitle" placeholder="Your Category Title"
+                            name="category_name" ngModel required>
+                        <label for="category_name">Category Title</label>
+                        <div *ngIf="submitted && categoryForm.controls['category_name']?.invalid" class="text-danger">
+                                Category title is required.
+                            </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <div class="form-floating">
+                        <textarea class="form-control" id="cDescription" placeholder="Category Description"
+                            style="height: 50px;" name="description" ngModel required></textarea>
+                        <label for="cDescription">Category Description</label>
+                        <div *ngIf="submitted && categoryForm.controls['description']?.invalid" class="text-danger">
+                                Category description is required.
+                            </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <div class="form-floating">
+                        <input type="file" class="form-control" id="image" accept="image" multiple required (change)="onFileChange($event)">
+                        <label for="image">category image </label>
+                                <div *ngIf="submitted && !imageUploaded" class="text-danger">
+                                 image is required.
+                            </div> 
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="text-center ">
+                <button type="submit" class="btn w-50 fw-bolder text-white mb-5" style="background-color: #b83807;">Add
+                    Category</button>
+            </div>
+        </form>
+    </div>
+
+</div>

@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="d-flex justify-content-start my-3 ms-2">
+        <button class="btn btn-outline-dark" (click)="goBack()">
+            <i class="fa-solid fa-left-long pe-2"></i> Back
+        </button>
+    </div>
+
+    <div class="text-center mb-5">
+        <h5 class="fw-bold" style="color:#b83807;">Seller Details</h5>
+    </div>
+  
+        <div class="row">
+            <div class="col-12 col-md-6 text-center pt-3">
+                <img [src]="seller.user.image" alt="User Image"
+                class="rounded-circle border border-secondary shadow-lg mb-4"
+                style="width: 200px; height: 200px; object-fit:cover;">
+
+                
+            </div>
+            <div class="col-md-6">
+                <div class="user-info ">
+                    <p><strong>Name:</strong> {{seller.user.name}}</p>
+                    <p><strong>Email:</strong> {{seller.user.email}}</p>
+                    <p><strong>Gender:</strong> {{seller.user.gender}}</p>
+                </div>
+                <div class="shop-info">
+                    <p><strong>Shop Name:</strong> {{seller.shop_name}}</p>
+                    <p><strong>About:</strong> {{seller.about}}</p>
+                    <p><strong>Address:</strong> {{seller.address}}</p>
+                    <p><strong>Phone:</strong> {{seller.phone}}</p>
+                </div>
+            </div>
+        </div>
+
+
+
+</div>

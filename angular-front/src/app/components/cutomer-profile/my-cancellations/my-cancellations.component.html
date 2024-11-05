@@ -1,0 +1,35 @@
+<div class="container-fluid shadow-lg">
+    <h6 class="pt-4 ps-5" style="color:#b83807">My Cancellations</h6>
+    <div class="container">
+        <table class="table text-center">
+            <thead>
+              <tr>
+                <th scope="col">Total Amount</th>
+                <th scope="col">Seller</th>
+                <th scope="col">Order Date</th>
+                <th scope="col">Status</th>
+                <th scope="col">Action</th>
+
+              </tr>
+            </thead>
+            <tbody>
+             <tr>
+                <td scope="col">
+                    <img src="images/bouquet.jpg" style="height:50px;width:50px;" alt="Product-Image">
+                </td>
+                <td style="font-size: 14px;"><a class="product" routerLink="/product/view">Product Name</a> </td>
+                <td>$100</td>
+                <td>Asmaa</td>
+                <td>2024-10-01</td>
+                <td>Cancelled</td>
+                <td>
+                  <a (click)="viewOrder()" style="cursor:pointer;"><i class="fa-solid fa-eye px-2 fs-5" ></i></a>
+                  <a routerLink="/checkout" style="cursor:pointer;"><i class="fa-solid fa-cart-shopping px-2 fs-5" style="color:#b83807"></i></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>
+
+

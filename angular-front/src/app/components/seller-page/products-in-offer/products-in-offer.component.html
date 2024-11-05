@@ -1,0 +1,78 @@
+<div class="container">
+  <h6 class="ps-5 pt-5 pb-3" style="color:#b83807;">All Products in Offer</h6>
+  <div class="container">
+    <div *ngIf="filteredProducts && filteredProducts.length > 0; else noProductsTemplate">
+      <div class="mb-5 d-flex justify-content-center">
+        <div class="input-group" style="width: 450px;">
+          <select [(ngModel)]="searchCriteria" class="form-select me-2 rounded-5">
+            <option value="name">Search by Name</option>
+            <option value="category">Search by Category</option>
+            <option value="price">Search by Price Range</option>
+          </select>
+          <div *ngIf="searchCriteria !== 'price'; else priceRangeInput">
+            <input type="text" [(ngModel)]="searchTerm" placeholder="Search products..."
+              class="form-control border rounded-pill" />
+          </div>
+
+          <ng-template #priceRangeInput>
+            <span style="padding-top:8px; padding-right:10px; padding-left:10px"> From </span>
+            <input type="number" [(ngModel)]="priceFrom" placeholder="From" class="form-control border rounded-pill"
+              style="max-width: fit-content;" />
+            <span style="padding-top:8px; padding-right:10px; padding-left:10px"> To </span>
+            <input type="number" [(ngModel)]="priceTo" placeholder="To" class="form-control border rounded-pill"
+              style="max-width: fit-content;" />
+          </ng-template>
+
+          <button class="btn border-0 rounded-pill" type="button" style="margin-left: -1px;">
+            <i (click)="search()" class="fa fa-search" style="color: #FF3A20;"></i>
+          </button>
+        </div>
+      </div>
+      <div class="container ">
+
+        <table *ngIf="products.length > 0" class="table text-center">
+          <thead>
+            <tr>
+              <th scope="col">image</th>
+              <th scope="col">Product Name</th>
+              <th scope="col">Description</th>
+              <th scope="col">Price</th>
+              <th scope="col">Stock</th>
+              <th scope="col">Action</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of filteredProducts | paginate: { itemsPerPage: itemsPerPage, currentPage: page } ">
+              <td scope="col">
+                <img [src]="product.cover_image" style="height:75px;width:75px; object-fit: cover;" alt="">
+              </td>
+              <td style="font-size: 16px;">
+                <p>{{product.product_name}}</p>
+              </td>
+              <td style="font-size: 14px; width:30%">{{product.description}}</td>
+              <td>${{product.price}}</td>
+              <td>{{product.stock}}</td>
+              <td>
+                <!-- <button class="btn btn-danger" (click)="deleteProduct(product)"></button> -->
+                <i (click)="deleteProduct(product)" class="fa-solid fa-trash px-2 fs-5"
+                  style="color:rgb(173, 4, 4);cursor: pointer;"></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="d-flex justify-content-center my-4 ">
+          <pagination-controls (pageChange)="page = $event"></pagination-controls>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #noProductsTemplate>
+  <div class="container text-center p-5 shadow-lg">
+    <img src="images/not-found.jpg" style="height:200px; width:250px;" alt="">
+    <h3 class="text-muted">No products available.</h3>
+  </div>
+</ng-template>

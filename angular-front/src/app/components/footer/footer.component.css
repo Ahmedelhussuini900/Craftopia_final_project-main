@@ -1,0 +1,7 @@
+.footer-img {
+    width: 150px;
+    height: 130px;
+    float: left;
+    shape-outside: circle(50%);
+    margin-right: 30px;
+}

@@ -1,0 +1,22 @@
+<div class="container">
+  <owl-carousel-o [options]="customOptions">
+    <ng-template carouselSlide *ngFor="let element of categories.slice(0, 6)">
+      <div class="container my-5">
+        <a (click)="onCategoryClick(element)" class="card h-100 category-card">
+          <img [src]="element.image" class="card-img" style="height:220px; object-fit:cover;" alt="{{ element.category_name }}">
+          <div class="card-img-overlay">
+            <p class="card-title" style="font-size:20px">
+              <strong>{{ element.category_name }}</strong>
+            </p>
+          </div>
+        </a>
+      </div>
+    </ng-template>
+  </owl-carousel-o>
+</div>
+
+<div class="text-center">
+  <button routerLink="/category" class="btn" style="background-color: #b83807; color:#fff">
+    View All Categories
+  </button>
+</div>

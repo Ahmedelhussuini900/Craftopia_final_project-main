@@ -1,0 +1,39 @@
+<div class="container">
+    <div>
+        <img src="images/payment/instapay.png" style="width: 200px; height:150px;" alt="">
+    </div>
+    <p class="p-3">Bank</p>
+    <div class="my-2 payment-form m-auto w-75 mb-5 border-0" style="background-color: #ffffff;">
+        <form method="post" action="">
+            <div class="my-3">
+                <div class="form-floating">
+                    <select class="form-select" id="bank" aria-label="bank">
+                        <option selected disabled>Select Bank Name</option>
+                        <option value="usa">United States</option>
+                        <option value="canada">Canada</option>
+                        <option value="uk">United Kingdom</option>
+                    </select>
+                    <label for="country">Select Bank Account</label>
+                </div>
+            </div>
+            <div class="mb-3">
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="accNo" placeholder="account number" name="accNo" required>
+                    <label for="accNo"> Account Number:</label>
+                </div>
+            </div>
+            <div class="mb-3">
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="receiver" placeholder="Reciever" name="receiver" required>
+                    <label for="receiver"> Receiver Number:</label>
+                </div>
+            </div>
+            <div class="text-center my-4">
+                <button type="submit" class="btn w-25 fw-bolder text-white">PAY</button>
+            </div>
+        </form>
+        
+    </div>
+
+</div>
+

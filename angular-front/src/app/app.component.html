@@ -1,0 +1,28 @@
+<div *ngIf="!dashboard">
+    <app-header></app-header>
+</div>
+
+
+
+<div *ngIf="!dashboard">
+    <router-outlet></router-outlet>
+</div>
+
+
+<div *ngIf="dashboard">
+    <div *ngIf="user.role == 'admin'">
+        <app-admin-page></app-admin-page>
+
+    </div>
+    
+    <div *ngIf="user.role == 'seller'">
+        <app-seller-page class="seller"></app-seller-page>
+    </div>
+        
+</div>
+
+<div *ngIf="!dashboard">
+    <app-footer></app-footer>
+</div> 
+
+ <!-- <app-admin-page></app-admin-page> -->

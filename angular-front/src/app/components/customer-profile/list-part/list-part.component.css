@@ -1,0 +1,25 @@
+.link{
+    list-style: none;
+    cursor: pointer;
+}
+ul{
+    list-style-type:none;
+}
+
+
+a{
+    text-decoration: none;
+    color: black ; 
+}
+
+.no-link{
+    list-style-type: none !important;
+    cursor: pointer;
+    color: black;
+}
+
+.link:hover{
+    color: #b83807;
+    font-size: 18px;
+    background-color:white;
+}  

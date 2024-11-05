@@ -1,0 +1,41 @@
+<div class="container mt-5 mb-5">
+    <div class="d-flex justify-content-start mb-3">
+        <button class="btn btn-outline-secondary" (click)="goBack()">
+            <i class="bi bi-arrow-left"></i> Back
+        </button>
+    </div>
+
+    <div class="text-center mb-5">
+        <h2 class="fw-bold">seller Details</h2>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <img [src]="seller.user.image" alt="User Image" class="rounded-circle border border-secondary shadow-lg mb-4" width="200" height="200">
+
+            <div class="user-info">
+                <p><strong>Name:</strong> {{seller.user.name}}</p>
+                <p><strong>Email:</strong> {{seller.user.email}}</p>
+                <p><strong>Gender:</strong> {{seller.user.gender}}</p>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="text-center mb-5 mt-5 mb-5">
+        <h2 class="fw-bold">Shop Information</h2>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <div class="shop-info">
+                <p><strong>Shop Name:</strong> {{seller.shop_name}}</p>
+                <p><strong>About:</strong> {{seller.about}}</p>
+                <p><strong>Address:</strong> {{seller.address}}</p>
+                <p><strong>Phone:</strong> {{seller.phone}}</p>
+            </div>
+        </div>
+    </div>
+
+</div>

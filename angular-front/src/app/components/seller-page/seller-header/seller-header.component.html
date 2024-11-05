@@ -1,0 +1,44 @@
+<div class="nav navbar-nav navbar-expand-lg">
+  <div class="container-fluid my-5 m-auto text-center">
+    <img src="images/resin1.jpg" class="rounded-circle" style="height:100px; width:100px;" alt="">
+    <div>
+      <p class="pt-4 ps-2 balance"> Your Balance: <span id="balance">{{seller.total_sales}}</span></p>
+    </div>
+    <ul class="">
+
+      <a>
+        <li class=" mt-4 mb-4" (click)="onLinkClick('my-products')">My Products</li>
+      </a>
+      <a>
+        <li class=" mt-4 mb-4" (click)="onLinkClick('all-seller-offers')">All Offers</li>
+      </a>
+      <a>
+        <li class=" mt-4 mb-4" (click)="onLinkClick('statistics')">Statistics</li>
+      </a>
+      <a>
+        <li class=" mt-4 mb-4" (click)="onLinkClick('seller-orders')">Waiting Orders</li>
+      </a>
+
+      <a>
+        <li class=" mt-4 mb-4" (click)="onLinkClick('seller-orders-to-b-done')">Orders in Progress</li>
+      </a>
+
+      <a>
+        <li class=" mt-4 mb-4" (click)="onLinkClick('done-orders')">Done Orders</li>
+      </a>
+
+      <a>
+        <li class=" my-4" (click)="onLinkClick('profile')">Profile</li>
+      </a>
+
+      <!-- <a>
+      <li class=" my-4" (click)="onLinkClick('register')">Become a Customer</li>
+    </a> -->
+
+      <a>
+        <li (click)="logout()" class=" my-4">Log-out</li>
+      </a>
+    </ul>
+  </div>
+
+</div>

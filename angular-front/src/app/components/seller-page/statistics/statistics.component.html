@@ -1,0 +1,52 @@
+<div class="container" style="height:100vh;">
+    <h6 class="ps-5 pt-5 pb-3" style="color: #b83807;">Most Selling Products</h6>
+  
+    <div  *ngIf="products && products.length > 0; else noProductsTemplate">
+      <table class="table text-center">
+        <thead>
+          <tr>
+            <th scope="col">image</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Price</th>
+            <th scope="col">Stock</th>
+            <th scope="col">total orders</th>
+
+            <th scope="col">Action</th>
+  
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products  | paginate: { itemsPerPage: itemsPerPage, currentPage: page }">
+            <td scope="col">
+              <img [src]="product.cover_image" style="height:75px;width:75px; object-fit: cover;" alt="">
+            </td>
+            <td style="font-size: 16px;">
+              <p>{{product.product_name.length>30 ?product.product_name.substring(0,30)+'...':product.product_name}}</p>
+  
+            </td>
+            <td style="font-size: 14px; width:30%">{{product.description.length>70 ?product.description.substring(0,70)+'...':product.description}}</td>
+  
+            <td>${{product.price}}</td>
+            <td>{{product.stock}}</td>
+            <td>{{product.total_ordered}}</td>
+
+            <td>
+              <a (click)="showProduct(product)"><i class="fa-solid fa-eye px-2 fs-5"
+                  style="cursor: pointer; color:black"></i></a>
+              
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="d-flex justify-content-center my-4 ">
+        <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+    </div>
+    <ng-template #noProductsTemplate>
+      <div class="container text-center p-5 shadow-lg">
+          <img src="images/not-found.jpg" style="height:200px; width:250px;" alt="">
+          <h3 class="text-muted">No data available.</h3>
+      </div>
+  </ng-template>
+</div>

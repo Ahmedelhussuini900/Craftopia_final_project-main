@@ -1,0 +1,82 @@
+<div class="container">
+    <h6 class="ps-5 pt-5 pb-3" style="color:#b83807;">Orders In Progress</h6>
+    <div class="container">
+        <div *ngIf="filteredProducts && filteredProducts.length > 0; else noProductsTemplate">
+            <div class="mb-5 d-flex justify-content-center">
+                <div class="input-group" style="max-width: fit-content;">
+                    <select [(ngModel)]="searchCriteria" class="form-select me-2 rounded-5">
+                        <option value="name">Search by Name</option>
+                        <option value="category">Search by Category</option>
+                        <option value="price">Search by Price Range</option>
+                    </select>
+                    <div *ngIf="searchCriteria !== 'price'; else priceRangeInput">
+                        <input type="text" [(ngModel)]="searchTerm" placeholder="Search products..."
+                            class="form-control border rounded-pill" style="max-width: fit-content;" />
+                    </div>
+
+                    <ng-template #priceRangeInput>
+                        <span style="padding-top:8px; padding-right:10px; padding-left:10px"> From </span>
+                        <input type="number" [(ngModel)]="priceFrom" placeholder="From"
+                            class="form-control border rounded-pill" style="max-width: fit-content;" />
+                        <span style="padding-top:8px; padding-right:10px; padding-left:10px"> To </span>
+
+                        <input type="number" [(ngModel)]="priceTo" placeholder="To"
+                            class="form-control border rounded-pill" style="max-width: fit-content;" />
+                    </ng-template>
+
+                    <button class="btn border-0 rounded-pill" type="button" style="margin-left: -1px;">
+                        <i (click)="search()" class="fa fa-search" style="color: #FF3A20;"></i>
+                    </button>
+                </div>
+            </div>
+
+            <table class="table text-center">
+                <thead>
+                    <tr>
+                        <th scope="col">Image</th>
+                        <th scope="col">Product</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Total Price</th>
+                        <th scope="col">seller</th>
+                        <th scope="col">Customer Info</th>
+                        <th scope="col">Seller Info</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr
+                        *ngFor="let item of filteredProducts | paginate: { itemsPerPage: itemsPerPage, currentPage: page }">
+                        <td>
+                            <img [src]="item.product.cover_image" style="height:70px; width:70px; object-fit: cover;">
+                        </td>
+                        <td>
+                            <span>{{item.product.product_name}}</span>
+                        </td>
+                        <td>{{item.product.priceAfterOffers}}</td>
+                        <td>{{item.quantity}}</td>
+                        <td>{{item.product.priceAfterOffers * item.quantity}}</td>
+                        <td>{{item.product.user.name}}</td>
+                        <td>
+                            <button type="button" class="btn me-1" style="color: #b83807;"
+                                (click)="getCustomer(item)"><img src="images/user.png" style="width: 40px;height:40px; border:1px solid #b83807 ;border-radius: 50%; padding:5px"></button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn me-1" (click)="getSeller(item)"><img src="images/seller.png" style="width: 40px;height:40px; border:1px solid #1d630c ;border-radius: 50%; "></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="d-flex justify-content-center my-4 ">
+                <pagination-controls (pageChange)="page = $event"></pagination-controls>
+            </div>
+        </div>
+
+    </div>
+</div>
+<ng-template #noProductsTemplate>
+    <div class="container text-center p-5 shadow-lg">
+        <img src="images/not-found.jpg" style="height:200px; width:250px;" alt="">
+        <h3 class="text-muted">No data available.</h3>
+    </div>
+</ng-template>

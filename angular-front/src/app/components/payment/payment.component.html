@@ -1,0 +1,10 @@
+<div class="container m-auto ">
+  <div class="text center p-5 m-3">
+    <app-methods-list (linkClicked)="showComponent($event)"></app-methods-list>
+  </div>
+  <div class="text center p-2 m-3">
+    <app-fawry *ngIf="activeComponent === 'fawry'"></app-fawry>
+    <app-instapay *ngIf="activeComponent === 'instapay'"></app-instapay>
+    <app-wallet *ngIf="activeComponent === 'wallet'"></app-wallet>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+
+td {
+    vertical-align: middle; 
+}
+
+.form-check-input:checked {
+    background-color: #b83807; 
+    border-color: #b83807; 
+}.form-check-input:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(184, 56, 7, 0.5); 
+    border: 1px solid #b83807; 
+}
+
+.btn{
+    background-color: #b83807;
+    color: #fff;
+}
+
+.btn:hover{
+    background-color: #231717;
+    color: white;
+}
+
+a{
+ text-decoration: none;
+    color: #b83807;
+}

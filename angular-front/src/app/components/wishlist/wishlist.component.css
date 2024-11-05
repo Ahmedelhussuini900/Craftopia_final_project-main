@@ -1,0 +1,15 @@
+.move{
+    color: white;
+    background-color: #10503A;
+}
+
+.move:hover{
+    color: #10503A;
+    background-color: #ffffff;
+    border-color: #10503A;
+}
+
+a{
+    text-decoration: none;
+    color: #ffffff;
+}

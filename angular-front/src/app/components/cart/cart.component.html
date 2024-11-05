@@ -1,0 +1,105 @@
+<div class="container mt-5 mb-5 pb-5">
+    <div *ngIf="empty" class="text-center mt-5">
+        <div class="alert alert-info" role="alert">
+            <strong>Your cart is empty!</strong> You haven't added any products yet.
+        </div>
+        <button routerLink="/products" class="btn btn-primary">Return to Products</button>
+    </div>
+    
+    <div *ngIf="!empty">
+        <div class="row shadow-lg text-center p-3">
+            <div class="col-2 d-flex justify-content-center align-items-center">
+                <p class="mb-0">Product</p>
+            </div>
+            <div class="col-2 d-flex justify-content-center align-items-center">
+                <p class="mb-0">Price</p>
+            </div>
+            <div class="col-2 d-flex justify-content-center align-items-center">
+                <p class="mb-0">Total Offers</p>
+            </div>
+            <div class="col-2 d-flex justify-content-center align-items-center">
+                <p class="mb-0">Quantity</p>
+            </div>
+            <div class="col-2 d-flex justify-content-center align-items-center">
+                <p class="mb-0">SubTotal</p>
+            </div>
+            <div class="col-2 d-flex justify-content-center align-items-center">
+                <p class="mb-0">Action</p>
+            </div>
+        </div>
+
+        <div *ngFor="let item of cartItems" class="row shadow-lg text-center p-3 mt-3 align-items-center">
+            <div class="col-2 d-flex align-items-center justify-content-center">
+                <img [src]="item.product.cover_image" style="height:70px; width:70px; object-fit: cover; padding-right:10px;" alt="">
+                <span class="ms-2">{{item.product.product_name}}</span>
+            </div>
+            <div class="col-2 d-flex align-items-center justify-content-center">
+                <p class="ps-2 mb-0">
+                    {{item.product.totalOffers}}%
+                </p>
+            </div>
+            <div class="col-2 d-flex align-items-center justify-content-center">
+                <p class="ps-2 mb-0">
+                    <span class="original-price me-2 border rounded p-1" *ngIf="item.product.price != item.product.priceAfterOffers">
+                        <span style="color: red; text-decoration: line-through;">
+                            $ {{ item.product.price }}
+                        </span>
+                    </span>
+                    <span class="discounted-price">
+                        $ {{ item.product.priceAfterOffers }}
+                    </span>
+                </p>
+            </div>
+
+            <div class="col-2 d-flex align-items-center justify-content-center">
+                <div class="d-flex quantity">
+                    <button (click)="downQuantity(item)" class="btn btn-link btn-minus">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <input id="form1" min="1" name="quantity" [value]='item.quantity' type="number" class="form-control" />
+                    <button (click)="addQuantity(item)" class="btn btn-link btn-plus">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="col-2 d-flex align-items-center justify-content-center">
+                <p class="ps-5 mb-0">$ {{item.product.priceAfterOffers * item.quantity}}</p>
+            </div>
+            <div class="col-2 d-flex justify-content-center align-items-center">
+                <a (click)="deleteItem(item)" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
+            </div>
+        </div>
+    </div>
+<div *ngIf="!empty">
+    <div class="container w-25 mb-4 mt-5" style="background-color: #fff; border: 2px solid  #b83807;">
+        <div class="p-3">
+            <p><strong>Cart Total</strong></p>
+        </div>
+        <div class="d-flex justify-content-between text-center row ">
+            <div class="col-md-6">
+                Total price:
+            </div>
+            <div class="col-md-6">
+                {{totalPrice}} $
+            </div>
+            <hr class="my-2">
+            <div class="col-md-6">
+                Total Saved by Offers:
+            </div>
+            <div class="col-md-6" style="color: red;">
+                {{totalOffers}} $
+            </div>
+            <hr class="my-2">
+            <div class="col-md-6">
+                Final Total:
+            </div>
+            <div class="col-md-6">
+                {{totalPriceAfterOffers}} $ 
+            </div>
+        </div>
+        <div class="text-center my-4">
+            <button routerLink="/checkout" class="btn p-2 checkout">Process to checkout</button>
+        </div>
+    </div>
+</div>
+</div>

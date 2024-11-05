@@ -1,0 +1,52 @@
+.product-form {
+    margin: auto;
+    padding: 2rem;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    background-color: #f9f9f9;
+}
+.form-floating {
+    position: relative;
+}
+
+.form-floating label {
+    position: absolute;
+    top: 0;
+    left: 0.75rem;
+    padding: 0.75rem 0.75rem;
+    pointer-events: none;
+    transition: all 0.2s ease;
+    color: #6c757d;
+}
+.form-floating input:not(:placeholder-shown) ~ label,
+.form-floating textarea:not(:placeholder-shown) ~ label,
+.form-floating input:focus ~ label,
+.form-floating textarea:focus ~ label {
+    top: -0.75rem;
+    left: 0.75rem;
+    font-size: 1.25rem;
+    color:#b83807;
+   
+}
+.form-control {
+    border-radius: 0.25rem;
+    
+}
+
+.form-control:focus {
+    border-color: #b83807; /* border color */
+    outline: none; /* default outline */
+    box-shadow: 0 0 5px rgba(184, 56, 7, 0.5); /*shadow with a blur effect */
+}
+
+
+.btn{
+    background-color: #b83807;
+}
+
+.btn:hover{
+    background-color: #231717;
+    color: white;
+}
+
+

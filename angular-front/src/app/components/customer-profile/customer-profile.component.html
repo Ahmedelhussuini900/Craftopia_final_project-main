@@ -1,0 +1,20 @@
+<div class="container-fluid">
+  <div class="row m-4">
+    <div class="col-12 col-md-3 my-5">
+      <app-list-part (linkClicked)="showComponent($event)"></app-list-part>
+    </div>
+
+    
+    <div class="col-12 col-md-9 my-5">
+      <app-customer-orders *ngIf="activeComponent === 'new-orders'">
+      </app-customer-orders>
+      <app-wishlist *ngIf="activeComponent === 'wishlist'"></app-wishlist>
+      <app-edit-profile *ngIf="activeComponent === 'edit-profile'" (linkClicked)="showComponent($event)"></app-edit-profile>
+      <app-customer-info *ngIf="activeComponent === 'profile'" (linkClicked)="showComponent($event)"></app-customer-info>
+
+      <app-change-password *ngIf="activeComponent === 'change-password'" (linkClicked)="showComponent($event)"></app-change-password>
+      <!-- <app-my-cancellations   *ngIf="activeComponent === 'my-cancellations'"></app-my-cancellations> -->
+      <app-view-order  *ngIf="activeComponent === 'view-order'"></app-view-order>
+    </div>
+  </div>
+</div>

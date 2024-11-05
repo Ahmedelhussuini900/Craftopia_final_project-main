@@ -1,0 +1,14 @@
+button:hover{
+    color:#b83807;
+    background-color: #fff;
+    border: 1px solid #fff;
+}
+td {
+    vertical-align: middle;
+}
+
+a{
+    text-decoration: none;
+       color: #b83807;
+   }
+   

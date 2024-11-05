@@ -1,0 +1,200 @@
+.quantity{
+    height: 35px;
+    width: 40px;
+}
+
+.btn-plus{ 
+    background-color: #ffffff;
+    color: #dd7230;
+    border-radius: 0px;
+    border-color: #dd7230;
+
+} 
+.btn-minus{
+    background-color: #ffffff;
+    color: #dd7230;
+    border-radius: 0px;
+    border-color: #dd7230;
+
+}
+
+.btn-plus:hover{
+    background-color:#dd7230;
+    color: #000000;
+    border-radius: 0px;
+} 
+.btn-minus:hover{
+    background-color:#dd7230;
+    color: #000000;
+    border-radius: 0px;
+}
+
+.form-control{
+    border-radius: 0px ;
+    text-align: center;
+    width: 50px;
+}
+
+
+.form-control:focus {
+    border-color: #b83807 !important;  
+    box-shadow: 0 0 0 0.2rem rgb(221, 114, 48, 0.1) !important;
+}
+
+
+.buy{
+    background-color: #dd7230;
+}
+
+.buy:hover{
+    color: #b83807;
+    background-color: #ffffff;
+    font-weight:bolder;
+    border-color: #b83807;
+}
+
+.fa-heart:hover{
+    color: rgb(207, 11, 11);
+}
+.fa-heart-selected{
+    
+    color: rgb(207, 11, 11);
+}
+
+
+.big-img{
+    height: 400px;
+    width:380px;
+}
+
+.video{
+    background-color: #ffc857;
+    width:fit-content;
+
+}
+
+a{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.card-footer{
+    background-color: #000000d3;
+    color:#ffffff;
+    position: absolute;
+    bottom: 0; 
+    height: 35px;
+}
+
+.text-footer{
+    font-size: 14px;
+}
+
+
+.video-container {
+    border: 2px solid #007bff; 
+    border-radius: 10px;
+    overflow: hidden; 
+}
+
+video {
+    border-radius: 10px; 
+}
+.selected-image {
+    border: 2px solid #007bff; 
+    transform: scale(1.1); 
+    transition: transform 0.2s; 
+}
+
+.sm-img {
+    height: 80px; width: 80px;
+
+    margin-right: 10px; 
+  }
+  .offers-list {
+  padding: 20px;
+}
+
+.offer-item {
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+}
+
+.offer-status .active {
+  color: green;
+}
+
+.offer-status .ended {
+  color: red;
+}
+
+
+
+
+
+
+
+.review-form {
+    max-width: 100%;
+    margin: auto;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    background-color: #f9f9f9;
+}
+.form-floating {
+    position: relative;
+}
+
+.form-floating label {
+    position: absolute;
+    top: 0;
+    left: 0.75rem;
+    padding: 0.75rem 0.75rem;
+    pointer-events: none;
+    transition: all 0.2s ease;
+    color: #6c757d;
+}
+.form-floating input:not(:placeholder-shown) ~ label,
+.form-floating textarea:not(:placeholder-shown) ~ label,
+.form-floating input:focus ~ label,
+.form-floating textarea:focus ~ label {
+    top: -0.75rem;
+    left: 0.75rem;
+    font-size: 1.25rem;
+    color:#b83807;
+   
+}
+.form-control {
+    border-radius: 0.25rem;
+    
+}
+
+.form-control:focus {
+    border-color: #b83807; /* border color */
+    outline: none; /* default outline */
+    box-shadow: 0 0 5px rgba(184, 56, 7, 0.5); /*shadow with a blur effect */
+}
+
+
+.mybtn{
+    background-color: #b83807;
+}
+
+.mybtn:hover{
+    background-color: #231717;
+    color: white;
+}
+
+
+.fa-star, .far.fa-star {
+    cursor: pointer;
+    font-size: 24px; 
+}
+
+.fa-star:hover,
+.fa-star:hover ~ .fa-star {
+    color: gold; 
+}

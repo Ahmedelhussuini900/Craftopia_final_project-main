@@ -1,0 +1,29 @@
+<div class="container m-auto w-50 shadow-lg my-4">
+  <div class=" text-center">
+
+    <div class=" m-auto" style="width: 250px; height: 250px;">
+      <ng-lottie [options]="successAnimationOptions" (animationCreated)="successAnimationCreated($event)"
+        style="height: 100%; width: 100%; display: block;">
+      </ng-lottie>
+    </div>
+
+    <h6>Verify your E-mail Address</h6>
+
+    <span class="px-3 span d-block"> Please check your email and click on the verification link we have sent you.</span>
+    <p class="pb-2"> You might need to ckeck your spam folder.</p>
+    <div class="text-center my-3">
+      <button class="reload-btn btn verified" (click)="reloadPage()">Verify</button>
+    </div>
+    <button class="btn mx-3 resend" style="font-size:12px" (click)="resendVerificationEmail()">Resend verification
+      email</button> <small>or</small>
+    <button class="btn other-email my-4 ms-3" style="font-size:12px" (click)="reloadPage()">Try login with other
+      email</button>
+
+
+    <!-- <button class="reload-btn btn verified" (click)="reloadPage()">Verified let's Login </button> -->
+
+    <!-- <button class="btn other-email my-4 ms-3" (click)="reloadPage()">Try login with other email</button> -->
+
+  </div>
+
+</div>

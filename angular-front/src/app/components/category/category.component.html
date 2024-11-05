@@ -1,0 +1,29 @@
+<div class="container shadow-lg my-5 p-5 m-auto">
+  <div>
+    <div class="input-group" style="width: 300px;">
+
+      <input class="form-control border rounded-pill" [(ngModel)]="searchTerm" type="search" placeholder="Search"
+        id="example-search-input">
+      <button class="btn border-0 rounded-pill" type="button" style="margin-left: -1px;">
+        <i (click)="search()" class="fa fa-search" style="color: #FF3A20;"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="row mt-3" *ngIf="categories != null">
+    <div class="col-md-3 mt-5"
+      *ngFor="let element of filteredCategories | paginate: { itemsPerPage: itemsPerPage, currentPage: page }">
+      <a (click)="onCategoryClick(element)" class="card h-100 category-card">
+        <img src="{{element.image}}" class="card-img" style="height:220px; object-fit:cover;" alt="...">
+        <div class="card-img-overlay">
+          <p class="card-title" style="font-size:20px;"><strong>{{element.category_name}}</strong></p>
+          <p class="card-text">{{ element.description.length > 50 ? (element.description | slice:0:50) + '...' :
+            element.description }}</p>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center my-4 ">
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+  </div>
+</div>

@@ -1,0 +1,100 @@
+<div class="container shadow-lg m-auto">
+    <div class="row  mx-3 py-4">
+        <div class="col-xl-6 d-flex">
+            <div class="col-md-2">
+                <a class="mt-2 sm-img item-thumb" (click)="onImageClick(product.cover_image)">
+                    <img width="70" height="70" class="rounded-2 object-fit-cover" [src]="product.cover_image"
+                        style="object-fit: cover;"
+                        [ngClass]="{'border border-primary': selectedImage === product.cover_image, 'selected-image': selectedImage === product.cover_image}" />
+                </a>
+                <a *ngFor="let image of product.images" class="sm-img item-thumb"
+                    (click)="onImageClick(image.image)">
+                    <img class="rounded-2" [src]="image.image" style="object-fit: cover; width:70px; height:70px; margin-top: 10px;"
+                        [ngClass]="{'border border-primary': selectedImage === image.image, 'selected-image': selectedImage === image.image}" />
+                </a>
+            </div>
+            <div class="col-12 col-md-4">
+                <img class="big-img" [src]="coverImage" style="object-fit: cover;" alt="">
+
+            </div>
+        </div>
+
+        <div class="col-xl-6 ps-4">
+            <p style="font-size: 18px;"><strong>{{product.product_name}}</strong></p>
+            <ul class="nav d-flex">
+                <div class="text-warning mb-1 me-2">
+
+                    <i class="fa fa-star" *ngFor="let item of [].constructor(stars); let i = index"></i>
+
+                    <i class="far fa-star" *ngFor="let item of [].constructor(5-stars); let i = index"></i>
+
+
+                    <span class="ms-1">
+                        {{stars}}
+                    </span>
+
+
+                </div>
+                <span style="font-size: 12px;" class="px-2">
+                    <div>
+                        <p
+                            style="background-color: #ffc857; color: #000; padding: 3px 7px; border-radius: 5px; font-weight: bold; font-size: 14px;">
+                            {{product.totalOffers}}%
+                        </p>
+                    </div>
+                </span>
+                <span style="font-size: 12px;" class="px-2">|</span>
+                <span style="font-size: 12px;"> {{product.stock}}: In Stock</span>
+            </ul>
+            <p class="pt-3"><strong>${{product.priceAfterOffers}}</strong></p>
+            <div *ngIf="product.priceAfterOffers != product.price">
+                <p class="price mb-1 text-decoration-line-through">${{ product.price }}</p>
+            </div>
+
+
+            <p class="w-75" style="font-size: 14px;">
+                {{product.description}}
+            </p>
+
+            <hr class="my-3">
+            <p><strong> materials:</strong> {{product.material}}</p>
+            <p><strong> size: </strong> {{product.size}}</p>
+
+        </div>
+
+    </div>
+
+
+    <div class="container my-5">
+        <h6 class="py-2">All reviews</h6>
+        <div class="container w-75 border border-1 p-4 my-3">
+            <div class="container bg-white">
+                <div>
+                    <p class="px-5 pt-5" style="font-size: 18px;">Reviews</p>
+                </div>
+                <div *ngIf="reviews" class="container card border border-0">
+                    <div class="card-body" *ngFor="let review of reviews">
+                        <img [src]="review.user.image" class="rounded-circle" style="height:50; width:50px" alt="">
+                        <h5 class="card-title d-inline">{{review.user.name}}</h5>
+                        <h6 class="card-subtitle mb-2 text-body-secondary">{{review.user.last_name}}</h6>
+                        <div class="pt-3">
+                            <div class="d-flex flex-row my-3">
+                                <div class="text-warning mb-1 me-2">
+                                    <i class="fa fa-star"
+                                        *ngFor="let item of [].constructor(review.rating); let i = index"></i>
+
+                                    <i class="far fa-star"
+                                        *ngFor="let item of [].constructor(5-review.rating); let i = index"></i>
+                                    <span class="ms-1">
+                                        {{review.rating}}
+                                    </span>
+                                </div>
+                            </div>
+                            <p class="card-text py-2">{{review.feedback}}</p>
+                        </div>
+                        <hr>
+                        <button (click)="deleteReview(review)">delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>

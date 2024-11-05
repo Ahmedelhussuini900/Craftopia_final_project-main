@@ -1,0 +1,16 @@
+<p><strong>Order Created At:</strong> {{ order?.created_at | date }}</p>
+<p><strong>Payment Status:</strong> {{ order?.payment_status }}</p>
+<p><strong>Phone:</strong> {{ order?.phone }}</p>
+<p><strong>Address:</strong> {{ order?.address }}</p>
+
+<h3>Order Items:</h3>
+<ul>
+  <li *ngFor="let item of order?.order_items">
+    <strong>Product Name:</strong> {{ item.product.name }}<br />
+    <strong>Quantity:</strong> {{ item.quantity }}<br />
+    <strong>Description:</strong> {{ item.product.description }}<br />
+    <strong>Stock:</strong> {{ item.product.stock }}<br />
+  </li>
+</ul>
+
+<p><strong>Total Price:</strong> {{ calculateTotalPrice(order?.order_items) | currency }}</p>

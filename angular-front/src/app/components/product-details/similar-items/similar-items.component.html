@@ -1,0 +1,29 @@
+<div class="px-0 rounded-2 shadow-0">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Related products</h5>
+            <div *ngIf="products.length > 1; else noProducts">
+                <div class="d-flex mb-3" *ngFor="let element of products">
+                    <div *ngIf="element.id !== currentProduct.id" (click)="onProductClick(element)" class="product-card">
+                        <a class="me-3">
+                            <img [src]="element.cover_image"
+                                style="min-width: 96px; height: 96px;" class="img-md img-thumbnail" />
+                        </a>
+                        <div class="info">
+                            <a class="nav-link mb-1">
+                                {{ element.product_name }}
+                            </a>
+                            <strong class="text-dark"> ${{ element.price }}</strong>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <ng-template #noProducts>
+                <div class="alert alert-info" role="alert">
+                    No related products available.
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</div>

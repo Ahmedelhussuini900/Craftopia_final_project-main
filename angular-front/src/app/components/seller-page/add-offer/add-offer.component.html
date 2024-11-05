@@ -1,0 +1,73 @@
+<div class="container my-5 ">
+    <div class="offer-form shadow-lg w-50" style="background-color: #ffffff;">
+        <div class="my-2">
+            <h6 style="color: #b83807;">Add an offer</h6>
+        </div>
+
+        <div *ngIf="submitted && backendErrors && getErrorMessages().length > 0" class="text-danger">
+            <ul>
+                <li class="list-unstyled text-center" *ngFor="let error of getErrorMessages()">{{ error }}</li>
+            </ul>
+        </div>
+        
+        <div class="mb-3 text-center">
+            <!-- <form (ngSubmit)="submitDates()" #dateForm="ngForm"> -->
+                <form #offerForm="ngForm" (ngSubmit)="onSubmit(offerForm)">
+                <div class="form-group my-3">
+                    <label for="startDate">Start Date:</label>
+                    <input type="date" id="startDate" class="form-control" [(ngModel)]="startDate" name="startDate"
+                        required (change)="onStartDateChange()" />
+                        <div *ngIf="submitted && offerForm.controls['startDate']?.invalid" class="text-danger">
+                            Offer start Date is required.
+                        </div>
+
+                </div>
+
+
+
+                <div class="form-group">
+                    <label for="endDate">End Date:</label>
+                    <input type="date" id="endDate" class="form-control" [(ngModel)]="endDate" name="endDate" required
+                        [min]="minEndDate" />
+
+                        <div *ngIf="submitted && offerForm.controls['endDate']?.invalid" class="text-danger">
+                            Offer end Date is required.
+                        </div>
+                </div>
+                
+                <div class="my-3">       
+                      <div class="form-floating">
+                    <input type="number" class="form-control" id="discount" placeholder="Your product price"
+                        name="discount" ngModel required min="1">
+                    <label for="discount">Product Price</label>
+                    <div *ngIf="submitted && offerForm.controls['discount']?.invalid" class="text-danger">
+                        <div *ngIf="offerForm.controls['discount']?.errors?.['required']">
+                            Offer discount is required.
+                        </div>
+                        <div *ngIf="offerForm.controls['price']?.errors?.['min']">
+                            Offer discount must be greater than 0.
+                        </div>
+                    </div>
+                </div>
+                </div>
+                
+
+                <div class="text-center">
+                    <button type="submit" class="btn my-3 text-center" >Submit</button>
+                </div>
+            </form>
+        </div>
+
+        
+        <div class="text-center fw-bolder">
+            <p *ngIf="startDate && endDate">The Offer will start at: {{ startDate | date: 'fullDate' }}</p>
+            <p *ngIf="endDate"> And will end at: {{ endDate | date: 'fullDate' }}</p>
+        </div>
+
+       
+
+
+    </div>
+
+
+</div>

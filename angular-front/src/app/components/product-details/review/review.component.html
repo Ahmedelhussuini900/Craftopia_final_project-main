@@ -1,0 +1,46 @@
+<div class="my-3 w-100">
+    <div class="review-form" style="background-color: white;">
+        <h4 class="text-center mb-4" style="color: #b83807;">Add your Review</h4>
+        <form #reviewForm="ngForm" (ngSubmit)="onSubmit(reviewForm)" >
+            <div class="my-3">
+                <div class="form-floating">
+                    <select class="form-select" id="rating" name="rating" ngModel required>
+                        <option selected disabled>Select Stars</option>
+                        <option value="1"> one star</option>
+                        <option value="2"> two star</option>
+
+                        <option value="3"> three star</option>
+
+                        <option value="4"> four star</option>
+
+                        <option value="5"> five star</option>
+
+
+                    </select>
+                    <label for="rating">Rating</label>
+                    <div *ngIf="submitted && reviewForm.controls['rating']?.invalid" class="text-danger">
+                        Product Rating is required.
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <div class="form-floating">
+                    <textarea class="form-control" id="review" name="review" placeholder="Your review" style="height: 75px;" ngModel required ></textarea>
+
+                    <label for="review">Review message</label>
+                    <div *ngIf="submitted && reviewForm.controls['review']?.invalid" class="text-danger">
+                        <div *ngIf="reviewForm.controls['review']?.errors?.['required']">
+                            Product Review message is required.
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+          
+            <div class="text-center">
+                <button type="submit" class="btn w-50 fw-bolder text-white">Add Review</button>
+            </div>
+        </form>
+    </div>
+</div>
+

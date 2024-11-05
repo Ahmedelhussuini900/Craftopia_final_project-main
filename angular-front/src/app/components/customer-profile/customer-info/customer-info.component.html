@@ -1,0 +1,24 @@
+<div class="container shadow-lg p-4 rounded-4 bg-light mt-5">
+    <div class="text-center my-4">
+        <img [src]="customer.user.image" class="rounded-circle border border-3 border-secondary" 
+            style="height: 120px; width: 120px; object-fit: cover;" alt="User Profile Image">
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-5 ">
+            <h6 class="mb-3 text-decoration-underline fw-bold">Personal Information:</h6>
+            <p class="py-2 ps-3"><strong>First Name:</strong> {{customer.user.name}}</p>
+            <p class="py-2 ps-3"><strong>Gender:</strong> {{customer.user.gender}}</p>
+            <p class="py-2 ps-3"><strong>Phone:</strong> {{customer.phone}}</p>
+            <p class="py-2 ps-3"><strong>Address:</strong> {{customer.address}}</p>
+        </div>
+        <div class="col-md-5 ">
+            <h6 class="mb-3 text-decoration-underline fw-bold">Account Details:</h6>
+            <p class="py-2 ps-3"><strong>Last Name:</strong> {{customer.user.last_name}}</p>
+            <p class="py-2 ps-3"><strong>Email:</strong> {{customer.user.email}}</p>
+            <p class="py-2 ps-3"><strong>Account Type:</strong> Customer</p>
+        </div>
+    </div>
+    <div class="text-center">
+        <a (click)="editProfile()" class="btn w-25 text-white mt-4 rounded-pill py-2">Edit Profile</a>
+    </div>
+</div>

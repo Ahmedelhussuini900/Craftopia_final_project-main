@@ -1,0 +1,30 @@
+<!-- <app-guest-header /> -->
+
+<div class="container-fluid carousel slide" id="carouselExampleAutoplaying" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active" *ngFor="let image of images; let isFirst = first">
+            <img [src]="image" class="d-block w-100" alt="Image" (error)="handleError($event)"
+                style="height: 500px; object-fit: cover;">
+              
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<div class="container my-5">
+    offers
+</div>
+
+<div>
+    
+</div>
+

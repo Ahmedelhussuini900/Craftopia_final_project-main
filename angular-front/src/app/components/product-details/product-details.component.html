@@ -1,0 +1,18 @@
+<section class="container my-5 py-5">
+    <app-item-info />
+</section>
+<!-- content -->
+
+<section class=" py-4">
+    <div class="container">
+        <div class="row gx-4">
+            <div class="col-md-8 border border-1">
+            <app-view-reviews/>
+            <app-review/>
+            </div>
+            <div class="col-md-4">
+            <app-similar-items (productSelected)="handleProductSelected($event)"></app-similar-items>/>
+            </div>
+        </div>
+    </div>
+</section>

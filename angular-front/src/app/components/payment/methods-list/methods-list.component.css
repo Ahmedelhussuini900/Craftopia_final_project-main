@@ -1,0 +1,15 @@
+li{
+    list-style: none;
+    padding: 20px 100px;
+}
+
+a{
+    text-decoration: none;
+    color: black ;
+}
+
+li:hover{
+    background-color: #b83807;
+    color:white;
+    
+}

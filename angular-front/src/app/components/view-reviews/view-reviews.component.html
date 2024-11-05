@@ -1,0 +1,28 @@
+<div class="container bg-white">
+    <div>
+        <h3 class="p-4">Reviews</h3>
+    </div>
+    <div class="container card border border-0">
+        <div class="card-body" *ngFor="let review of reviews">
+            <img [src]="review.user.image" class="rounded-circle" style="height:50; width:50px" alt="">
+          <h5 class="card-title d-inline">{{review.user.name}}</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary">{{review.user.last_name}}</h6>
+          <div class="pt-3">
+            <div class="d-flex flex-row my-3">
+              <div class="text-warning mb-1 me-2">
+                  <i class="fa fa-star"  *ngFor="let item of [].constructor(review.rating); let i = index"></i>
+                  <!-- <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i> -->
+                  
+                  <i class="far fa-star" *ngFor="let item of [].constructor(5-review.rating); let i = index"></i>
+                  <span class="ms-1">
+                      {{review.rating}}
+                  </span>
+              </div>
+          </div>
+          <p class="card-text py-2">{{review.feedback}}</p>
+        </div>
+        <hr>
+    </div>
+</div>

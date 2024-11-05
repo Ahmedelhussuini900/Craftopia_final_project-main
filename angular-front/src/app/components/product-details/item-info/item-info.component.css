@@ -1,0 +1,14 @@
+.video-container {
+    border: 2px solid #007bff; 
+    border-radius: 10px;
+    overflow: hidden; 
+}
+
+video {
+    border-radius: 10px; 
+}
+.selected-image {
+    border: 2px solid #007bff; 
+    transform: scale(1.1); 
+    transition: transform 0.2s; 
+}

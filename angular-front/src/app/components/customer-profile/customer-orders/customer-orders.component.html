@@ -1,0 +1,40 @@
+<div class="container-fluid shadow-lg">
+  <h6 class="pt-4 ps-5" style="color:#b83807">All Delivered Order Items</h6>
+  <div class="container">
+    <table class="table text-center">
+      <thead>
+        <tr>
+          <th scope="col">Image</th>
+          <th scope="col">Product Name</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Total Amount</th>
+          <th scope="col">Order Date</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of orderItems">
+          <td>
+            <img  [src]="item.product.cover_image" width="150px" height="150px" alt="">
+          </td>
+
+          <td>
+          {{item.product.product_name}}
+          </td>
+          <td>
+          {{item.quantity}}
+          </td>
+          
+          <td>{{ item.product.priceAfterOffers * item.quantity}}</td>
+          <td>{{ item.created_at }}</td>
+          <td>
+            <a (click)="show(item.product)" style="cursor:pointer;">
+              <i class="fa-solid fa-eye px-2 fs-5 text-black" style="text-decoration: none;"></i>
+            </a>
+            <i class="fa-solid fa-trash px-2 fs-5" style="color:rgb(173, 4, 4)" (click)="delete(item)"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

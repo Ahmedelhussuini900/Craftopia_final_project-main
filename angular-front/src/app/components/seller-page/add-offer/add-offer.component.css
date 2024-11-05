@@ -1,0 +1,57 @@
+.offer-form {
+    margin: auto;
+    padding: 2rem;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    background-color: #f9f9f9;
+}
+.form-floating {
+    position: relative;
+}
+
+.form-floating label {
+    position: absolute;
+    top: 0;
+    left: 0.25rem;
+    padding: 0.25rem 0.25rem;
+    pointer-events: none;
+    transition: all 0.2s ease;
+    color: #6c707d;
+}
+.form-floating input:not(:placeholder-shown) ~ label,
+.form-floating textarea:not(:placeholder-shown) ~ label,
+.form-floating input:focus ~ label,
+.form-floating textarea:focus ~ label {
+    top: -0.75rem;
+    left: 0.1rem;
+    font-size: 1.25rem;
+    color:#b83807;
+   
+}
+.form-control {
+    border-radius: 0.25rem;
+    
+}
+
+.form-control:focus {
+    border-color: #b83807; 
+    outline: none; 
+    box-shadow: 0 0 5px rgba(184, 56, 7, 0.5);
+}
+
+.form-check-input:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(184, 56, 7, 0.5); 
+    border: 1px solid #b83807; 
+}
+
+.btn{
+    background-color: #b83807;
+    color:#fff;
+}
+
+.btn:hover{
+    background-color: #231717;
+    color: white;
+}
+

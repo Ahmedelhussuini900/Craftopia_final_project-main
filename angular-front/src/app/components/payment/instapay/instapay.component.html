@@ -1,0 +1,61 @@
+<!-- <div class="container-fluid shadow-lg">
+    <div>
+        <img src="images/payment/instapay.png" style="width: 200px; height:150px;" alt="">
+    </div>
+
+    
+        <div class="my-2 payment-form m-auto w-75 mb-5" style="background-color: #f8eece;">
+            <form method="post" action="" class="my-3">
+                <div class="mb-3">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="name" placeholder="name" name="name" required>
+                        <label for="name">Name:</label>
+                    </div>
+                </div>
+                <div class="row g-3">
+                    <div class="col-12 col-md-3">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="phoneNo" placeholder="Phone Number" name="phoneNo" required>
+                            <label for="phoneNo">Phone Number</label>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-1 text-center align-self-center">
+                        <span>OR</span>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="username" placeholder="username" name="username" required>
+                            <label for="username">Username</label>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-1 text-center align-self-center">
+                        <span>OR</span>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="account" placeholder="account" name="account" required>
+                            <label for="account">Account</label>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="text-center my-4">
+                    <button type="submit" class="btn w-25 fw-bolder text-white">PAY</button>
+                </div>
+            </form>
+        </div>
+    
+    
+</div> -->
+
+<div class="container shadow-lg">
+    <div>
+        <app-payment-list (linkClicked)="showComponent($event)"></app-payment-list>
+    </div>
+    <div>
+        <app-mobile *ngIf="activeComponent === 'mobile'"></app-mobile>
+        <app-address *ngIf="activeComponent === 'address'"></app-address>
+        <app-bank *ngIf="activeComponent === 'bank'"></app-bank>
+        <app-card *ngIf="activeComponent === 'card'"></app-card>
+    </div>
+</div>

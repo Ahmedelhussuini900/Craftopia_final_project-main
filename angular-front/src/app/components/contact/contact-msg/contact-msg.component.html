@@ -1,0 +1,69 @@
+<div class=" my-5 m-auto">
+    <div class="contact-form shadow-lg" style="background-color: #ffffff;">
+        <h5 class="text-center mb-4" style="color: #b83807;">Contact Us</h5>
+        <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm" >
+
+            <div class="row">
+                <div class="col-12 col-md-4">
+                    <div class="mb-3">
+                        <div class="form-floating">
+                            
+                            <input type="text" class="form-control" id="fname" [(ngModel)]="customer.user.name"
+                            placeholder="First Name" name="name" required ngModel>
+                            
+                            <label for="name">Your Name</label>
+                            <div *ngIf="submitted && contactForm.controls['name']?.invalid" style="color:#b83807">
+                                First Name is required.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-12 col-md-4">
+                    <div class="mb-3">
+                        <div class="form-floating">
+                            <input type="email" class="form-control" id="email" name="email" [(ngModel)]="customer.user.email" placeholder="Your Email" required ngModel>
+                            <label for="email">Your Email</label>
+                            <div *ngIf="submitted && contactForm.controls['email']?.invalid" style="color:#b83807">
+                                <div *ngIf="contactForm.controls['email']?.errors?.['required']">
+                                    Email is required.
+                                </div>
+                                <div *ngIf="contactForm.controls['email']?.errors?.['email']">
+                                    Please enter a valid email address.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-12 col-md-4">
+                    <div class="mb-3">
+                        <div class="form-floating">
+
+                            <input type="tel" class="form-control" id="phone" [(ngModel)]="customer.phone"
+                                placeholder="Phone" name="phone" required pattern="[0-9]{11}" ngModel>
+                                <label for="phone">Your Phone</label>
+                            <div *ngIf="submitted && contactForm.controls['phone']?.invalid" style="color:#b83807">
+                                Phone number is required and must be a valid 10-digit number.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+           
+            <div class="mb-3">
+                <div class="form-floating">
+                    <textarea class="form-control" name ='message' id="message" placeholder="Your Message" style="height: 150px;" ngModel required></textarea>
+                    <label for="message">Your Message</label>
+                    <div *ngIf="submitted && contactForm.controls['message']?.invalid" style="color:#b83807">
+                        message is required.
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn w-50 fw-bolder text-white">Send Message</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+li:hover{
+    font-size: 18px;
+}
+
+li>a:hover{
+    color: #FF3A20;
+}
+
+#example-search-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #e9760b;
+    border-color: #e9760b;
+}
+

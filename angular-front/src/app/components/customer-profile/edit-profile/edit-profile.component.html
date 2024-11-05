@@ -1,0 +1,104 @@
+<div class="container my-5 ">
+    <div class="register-form shadow-lg" style="background-color: #ffffff;">
+        <div *ngIf="submitted && backendErrors && getErrorMessages().length > 0" class="text-danger text-center">
+            <ul>
+                <li class="list-unstyled" *ngFor="let error of getErrorMessages()">{{ error }}</li>
+            </ul>
+        </div>
+        <form (ngSubmit)="onSubmit(updateUserForm)" #updateUserForm="ngForm" enctype="multipart/form-data">
+            <div class="d-flex justify-content-around my-4">
+                <div>
+                    <h6 class="pb-3" style="color: #b83807;">Edit your Account</h6>
+                </div>
+                <div>
+                    <button (click)="changePassword()" class="btn">change password</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="fname" [(ngModel)]="customer.user.name"
+                                placeholder="First Name" name="name" required ngModel>
+                            <label for="fname">First Name</label>
+                            <div *ngIf="submitted && updateUserForm.controls['name']?.invalid" style="color:#b83807">
+                                First Name is required.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-floating">
+                            <textarea class="form-control" id="address" [(ngModel)]="customer.address"
+                                placeholder="Your address" name="address" style="height: 50px;" ngModel
+                                required></textarea>
+                            <label for="address">Address details</label>
+                            <div *ngIf="submitted && updateUserForm.controls['address']?.invalid" style="color:#b83807">
+                                Address is required.
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
+
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="lname" [(ngModel)]="customer.user.last_name"
+                                placeholder="Last Name" name="last_name" required ngModel>
+                            <label for="lname">Last Name</label>
+                            <div *ngIf="submitted && updateUserForm.controls['last_name']?.invalid"
+                                style="color:#b83807">
+                                Last Name is required.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="my-3">
+                        <div class="form-floating">
+                            <input type="tel" class="form-control" id="phone" [(ngModel)]="customer.phone"
+                                placeholder="Phone" name="phone" required pattern="[0-9]{11}" ngModel>
+                            <label for="phone">Phone</label>
+                            <div *ngIf="submitted && updateUserForm.controls['phone']?.invalid" style="color:#b83807">
+                                Phone number is required and must be a valid 10-digit number.
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
+
+
+            </div>
+
+
+            <div class="text-center my-4">
+
+                <div class="">
+                    <img [src]="customer.user.image" class="rounded-circle" style="height:100px; width:100px; object-fit:cover;" alt="">
+
+                </div>
+                <div class="">
+                    <input type="file" name="image" id="img" class="file" (change)="onFileChange($event)" />
+
+                </div>
+            </div>
+
+
+
+
+            <div class="text-center my-4">
+                <button type="submit" class="btn w-25 fw-bolder text-white">Save Changes</button>
+            </div>
+
+
+
+        </form>
+    </div>
+</div>

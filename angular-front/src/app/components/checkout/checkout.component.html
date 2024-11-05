@@ -1,0 +1,109 @@
+<div class="container shadow-lg my-4">
+    <div>
+        <h5 class="px-5 py-4"><strong>Billing Details</strong></h5>
+    </div>
+    <div class="row">
+        <div class="col-md-6 checkout-form ">
+            <form #orderForm="ngForm" (ngSubmit)="onSubmit(orderForm)">
+
+
+                <div class="my-3">
+                    <div class="form-floating">
+                        <input type="tel" class="form-control" id="phone" [(ngModel)]="customer.phone"
+                            placeholder="Phone" name="phone" required pattern="[0-9]{11}" ngModel>
+                        <label for="phone">Phone</label>
+                        <div style="color: red;" *ngIf="submitted && orderForm.controls['phone']?.invalid">
+                            Phone number is required and must be a valid 10-digit number.
+                        </div>
+                    </div>
+                </div>
+                <div class="my-3">
+                    <div class="form-floating">
+                        <textarea class="form-control" id="address" [(ngModel)]="customer.address"
+                            placeholder="Your address" name="address" style="height: 50px;" ngModel required></textarea>
+                        <label for="address">Address details</label>
+                        <div style="color: red;" *ngIf="submitted && orderForm.controls['address']?.invalid">
+                            Address is required.
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                    <button class="btn mt-3" type="submit"> Place order</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6 p-5 ">
+            <div class="container p-5  boarder rounded shadow " style="background-color: #ffffff;">
+                <div class="row">
+                    <div class="col">
+                        <table class="table text-center">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">Product</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Total Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of cartItems">
+                                    <td>
+                                        <img [src]="item.product.cover_image"
+                                            style="height:50px; width:50px; padding-right: 10px;" alt="Product Image">
+                                        {{item.product.product_name}}
+
+                                    </td>
+                                    <td>{{item.quantity}}</td>
+                                    <td>{{item.product.priceAfterOffers}} $</td>
+
+                                    <td>{{item.product.priceAfterOffers * item.quantity}} $</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="d-flex align-items-center justify-content-between mt-4">
+                        <div>Total before offer:</div>
+                        <div>{{totalPrice}} $</div>
+                    </div>
+                    <hr class="my-4">
+
+
+
+                    <div class="d-flex align-items-center justify-content-between ">
+                        <div>saved by offers:</div>
+                        <div>{{totalOffers}} $</div>
+                    </div>
+                    <hr class="my-4">
+
+                    <div class="d-flex align-items-center justify-content-between ">
+                        <div>Total:</div>
+                        <div>{{totalPriceAfterOffers}} $</div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="modal" id="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <ng-lottie [options]="successAnimationOptions"
+                                (animationCreated)="successAnimationCreated($event)" style="height:50%; width:50%;">
+                            </ng-lottie>
+                        </div>
+                        <div class="modal-body d-flex justify-content-center">
+                            <button routerLink="/home" class="btn" (click)="closeModal()" data-bs-toggle="modal"
+                                style="background-color: #231717; color:white">Close</button>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

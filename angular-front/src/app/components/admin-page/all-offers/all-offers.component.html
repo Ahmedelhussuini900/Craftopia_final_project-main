@@ -1,0 +1,82 @@
+<div class="container">
+  <h6 class="ps-5 pt-5 pb-3" style="color: #b83807;">All Offers</h6>
+
+  <div *ngIf="filteredOffers && filteredOffers.length > 0; else noProductsTemplate">
+    <div class="mb-5 d-flex justify-content-center">
+      <div class="input-group ms-3" style="max-width: fit-content;">
+        <select [(ngModel)]="searchCriteria" class="form-select me-2 rounded-5">
+          <option value="date">Search by Date Range</option>
+          <option value="discount">Search by discount</option>
+        </select>
+
+        <input *ngIf="searchCriteria  == 'discount'; else date" type="number" [(ngModel)]="discount"
+          placeholder="Discount (%)" class="form-control border rounded-pill"
+          style="max-width: fit-content; margin-left: 10px;" />
+
+
+        <ng-template #date>
+          <span style="padding-top:8px; padding-right:10px; padding-left:10px"> Start Date</span>
+          <input type="date" [(ngModel)]="startDate" class="form-control border rounded-pill" placeholder="Start Date"
+            style="max-width: fit-content;" />
+          <span style="padding-top:8px; padding-right:10px; padding-left:10px"> End Date</span>
+          <input type="date" [(ngModel)]="endDate" class="form-control border rounded-pill" placeholder="End Date"
+            style="max-width: fit-content;" />
+
+        </ng-template>
+
+
+        <button class="btn border-0 rounded-pill" type="button" style="margin-left: -1px;">
+          <i (click)="search()" class="fa fa-search" style="color: #FF3A20;"></i>
+        </button>
+      </div>
+    </div>
+    <div class="container mt-2">
+      <table class="table text-center">
+        <thead>
+          <tr>
+            <th scope="col">discount</th>
+            <th scope="col">start</th>
+            <th scope="col">end</th>
+            <th scope="col">status</th>
+            <th scope="col">action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let offer of filteredOffers | paginate: { itemsPerPage: itemsPerPage, currentPage: page }">
+
+            <td style="font-size: 14px;">{{offer.discount}}</td>
+            <td style="font-size: 14px;">{{offer.start_date}}</td>
+            <td>{{offer.end_date}}</td>
+            <td> <span [ngClass]="{
+                    'active': isOfferActive(offer.end_date),
+                    'ended': !isOfferActive(offer.end_date)
+                  }">
+                {{ isOfferActive(offer.end_date) ? 'Active' : 'Ended' }}
+              </span>
+            </td>
+
+            <td>
+              <!-- <a (click)="" style="cursor:pointer;"> -->
+
+              <i (click)="delete(offer)" class="fa-solid fa-trash px-2 fs-5"
+                style="color:rgb(173, 4, 4); cursor: pointer;"></i>
+
+              <!-- <button (click)="viewProduct(product)" class="btn btn-success ms-2">view</button> -->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+    <div class="d-flex justify-content-center my-4 ">
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+  </div>
+</div>
+
+<ng-template #noProductsTemplate>
+  <div class="container text-center p-5 shadow-lg">
+    <img src="images/not-found.jpg" style="height:200px; width:250px;" alt="">
+    <h3 class="text-muted">No data available.</h3>
+  </div>
+</ng-template>

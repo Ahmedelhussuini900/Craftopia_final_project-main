@@ -1,0 +1,67 @@
+<div class="container shadow-lg mt-5 mb-5 pb-5">
+    <h6 class="p-5" style="color:#991f00" >Order Items</h6>
+    <div class="container">
+        <table class="table text-center">
+            <thead>
+                <tr>
+                    <th scope="col">Product</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of orderItems">
+                    <td class="p-2 ">
+                        <img [src]="item.product.cover_image" style="width:60px; height:60px; object-fit: cover; padding-right:20px;">
+                        <span>{{item.product.product_name}}</span>
+                    </td>
+                    <td>{{item.product.priceAfterOffers}}</td>
+                    <td>{{item.quantity}}</td>
+                    <td [ngClass]="item.status">
+                        {{ item.status === 'doing' ? 'under crafting' : item.status }}
+                        <div *ngIf="item.status == 'done'">
+                            <button (click)="delivered(item)" class="btn btn-success m-2"> delivered</button>
+                        </div>
+                    </td>
+                    <td>
+                        <button type="button" class="btn me-1" style="color:rgb(2, 0, 0);" (click)="viewProduct(item.product)"><i class="fa-solid fa-eye fs-4"></i></button>
+                        <button *ngIf="item.status == 'done'" type="button" class="btn me-1" style="color: #991f00;" (click)="viewSeller(item)">contact seller</button>
+
+                        <button *ngIf="order.payment_status != 'payed'" type="button" class="btn me-1" style="color: #991f00;" (click)="delete(item)"><i class="fa-solid fa-trash-can fs-4"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container mt-4 w-50">
+        <div class="row">
+            <div class="col-12">
+                <div class="p-3 shadow-lg rounded" style="background-color: #fff; border:1px solid #991f00">
+                    <div class="text-center">
+                     <h6>Order Summary</h6>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-around">
+                        <div><strong>Total before offers:</strong></div>
+                        <div> <p> {{ totalPrice }} </p></div>
+                    </div>
+                    <div class="d-flex justify-content-around">
+                        <div><strong>Total saved by offers:</strong></div>
+                        <div><p> -{{ totalOffers }} </p></div>
+                    </div>                    
+                    <hr>
+
+                    <div class="d-flex justify-content-around">
+                        <div> <strong>Total after offers:</strong></div>
+                        <div> <p>{{ totalPriceAfterOffers }}</p> </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>

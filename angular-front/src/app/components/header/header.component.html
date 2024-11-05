@@ -1,0 +1,86 @@
+
+
+<div *ngIf="!isLogged">
+    <app-guest-header></app-guest-header>
+</div>
+
+
+<div *ngIf="isLogged">
+<app-customer-header />
+</div>
+
+<!-- <app-auth-guest-header /> -->
+
+<!-- <nav class="navbar navbar-expand-lg shadow-sm">
+    <div class="container-fluid">
+        <a class="navbar-brand" routerLink="home"><img src="images/logo.png" width="100px" height="40px"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse d-flex justify-content-around" id="navbarNav">
+            <div>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a routerLink="home" class="nav-link " aria-current="page">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a routerLink="category" class="nav-link" aria-current="page" href="#">Categories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a routerLink="products" class="nav-link" aria-current="page" href="#">Products</a>
+                    </li> -->
+                    <!-- <li class="nav-item">
+                        <a routerLink="order" class="nav-link" aria-current="page">Orders</a>
+                    </li> -->
+                <!-- </ul>
+            </div>
+
+            <div class="input-group h-50" style="width:400px;">
+                <input class="form-control border-end-0 border rounded-pill" type="search" placeholder="search"
+                    id="example-search-input">
+                <span class="input-group-append">
+                    <button class="btn border-0 border rounded-pill ms-n5" type="button"
+                        style=" margin-left: -40px;">
+                        <i class="fa fa-search" style="color:#e9760b;"></i>
+                    </button>
+                </span>
+            </div>
+            <div>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a routerLink="cart" class="nav-link" aria-current="page"><i class="fa-solid fa-cart-shopping pe-2" style="color: #e9760b;"></i>Cart</a>
+                    </li>
+                    <li class="nav-item">
+                        <a routerLink="contact" class="nav-link" aria-current="page">Contact</a>
+                    </li>
+
+                    <li class="nav-item" *ngIf="!isLogged">
+                        <a routerLink="login" class="nav-link" aria-current="page" >Login</a>
+                    </li>
+                    <li class="nav-item" *ngIf="isLogged">
+                        <button (click)="logout()" class="nav-link" aria-current="page" >LogOut</button>
+                    </li> -->
+                    <!-- <li class="nav-item">
+                        <a routerLink="register" class="nav-link" aria-current="page" >Register</a>
+                    </li> -->
+                <!-- </ul>
+            </div>
+
+       
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start" style="width: 200px;">
+                <div *ngIf="isLogged">
+                  <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+                    <img class="bi me-2 rounded-circle" width="40" height="32" role="img" aria-label="Bootstrap" [src]="userImage" alt="user">
+                    <div>
+                      <p>{{ userName }}</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              
+
+        </div>
+    </div>
+</nav> -->

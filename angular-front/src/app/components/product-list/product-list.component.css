@@ -1,0 +1,29 @@
+.card-title{
+    font-size: 18px;
+}
+
+.desc{
+    font-size: 10px !important;
+}
+
+.ordered-info {
+    font-weight: bold;
+    background-color: #f0f0f0; 
+    border-radius: 8px; 
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); 
+    padding: 10px; 
+}
+
+
+.input-group {
+    display: flex;
+  }
+  
+  .form-control {
+    border-right: none; 
+  }
+  
+  .btn {
+    border-left: none; 
+  }
+  

@@ -1,0 +1,30 @@
+<div class="container-fluid" style="background-color: #fff;">
+  <div class="row">
+    <div class="col-md-3" style="color:white; background-color:#231717; height:100vh; overflow-y:auto; ">
+      <app-admin-header (linkClicked)="showComponent($event)" style="height: 100vh; "></app-admin-header>
+    </div>
+    <div class="col-12 col-md-9 container-fluid shadow-lg"  style="background-color: #fff; height:98vh; overflow-y:auto;">
+
+      <app-pending-products *ngIf="activeComponent === 'pending-products'"></app-pending-products>
+      <app-all-categories *ngIf="activeComponent === 'all-categories'"  (linkClicked)="showComponent($event)"></app-all-categories>
+      <app-all-customers *ngIf="activeComponent === 'all-customers'"></app-all-customers>
+      <app-all-offers *ngIf="activeComponent === 'all-offers'"></app-all-offers>
+      <app-all-products *ngIf="activeComponent === 'all-products'"   (linkClicked)="showComponent($event)"></app-all-products> 
+      <app-all-sellers *ngIf="activeComponent === 'all-sellers'"></app-all-sellers>
+      <app-banned-customers *ngIf="activeComponent === 'banned-customers'"></app-banned-customers>
+      <app-banned-sellers *ngIf="activeComponent === 'banned-sellers'"></app-banned-sellers>
+      <!-- <app-offered-products *ngIf="activeComponent === 'offered-products'"></app-offered-products> -->
+      <app-rejected-products *ngIf="activeComponent === 'rejected-products'"></app-rejected-products>
+      <app-add-category *ngIf="activeComponent === 'add-category'" (linkClicked)="showComponent($event)"></app-add-category>
+      <app-update-category *ngIf="activeComponent === 'update-category'" (linkClicked)="showComponent($event)"></app-update-category>
+      <app-admin-view-product *ngIf="activeComponent === 'view-product'" ></app-admin-view-product>
+      <app-list-contact-messages *ngIf="activeComponent === 'list-messages'" ></app-list-contact-messages>
+      <app-seller-orders  *ngIf="activeComponent === 'seller-orders'" (linkClicked)="showComponent($event)"></app-seller-orders>
+      <app-sellers-orders-to-be-done  *ngIf="activeComponent === 'seller-orders-to-b-done'" (linkClicked)="showComponent($event)"></app-sellers-orders-to-be-done>
+      <app-to-be-delivered-otems  *ngIf="activeComponent === 'done-orders'" (linkClicked)="showComponent($event)"></app-to-be-delivered-otems>
+      <app-show-customer-information *ngIf="activeComponent === 'show-customer'" (linkClicked)="showComponent($event)"></app-show-customer-information>
+      <app-show-seller-contact *ngIf="activeComponent === 'show-seller'" (linkClicked)="showComponent($event)"></app-show-seller-contact>
+
+    </div>
+  </div>
+</div>

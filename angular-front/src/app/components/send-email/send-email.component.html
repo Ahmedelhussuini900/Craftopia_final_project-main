@@ -1,0 +1,65 @@
+<div class="container m-auto my-5  w-50 shadow-lg py-5">
+    
+
+    <div class="container">
+        <div class="email-form" style="background-color: #ffffff;">
+            <h6 class="py-4 text-center">Send Email</h6>
+            <form (ngSubmit)="onSubmit(mailForm)" #mailForm="ngForm" enctype="multipart/form-data">
+                <div class="form-floating">
+                    <input type="email" class="form-control" id="email" placeholder="Email" name="email" required email
+                        ngModel>
+                    <label for="email">Email</label>
+                    <div *ngIf="submitted && mailForm.controls['email']?.invalid" style="color:#b83807">
+                <div *ngIf="mailForm.controls['email']?.errors?.['required']">
+                    Email is required.
+                </div>
+                <div *ngIf="mailForm.controls['email']?.errors?.['email']">
+                    Please enter a valid email address.
+                </div>
+            </div>
+                </div>
+                <div class="text-center my-4">
+                    <button class="btn"> Send Email </button>
+                </div>
+            </form>
+
+
+            <div class="modal" id="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <div class="modal-body">
+                           
+                            <p>An Error Occured</p>
+                            <p class="p-3 pt-4 text-center">{{errorMessage}}</p>
+                        </div>
+                        <div class="modal-body d-flex justify-content-center">
+                            <button class="btn" (click)="closeModalError()" data-bs-toggle="modal"
+                                style="background-color: #231717; color:white">Close</button>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal" id="myModalSuccess">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <div class="modal-body">
+                           
+                            <p>Success!</p>
+                            <p>{{errorMessage}}</p>
+                        </div>
+                        <div class="modal-body d-flex justify-content-center">
+                            <button class="btn" (click)="closeModal()" data-bs-toggle="modal"
+                                style="background-color: #231717; color:white">Close</button>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
